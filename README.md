@@ -17,8 +17,8 @@
 -  [文件系统的抽象](./document/md/kernel/文件系统的抽象.md)
 -  [文件管理](./document/md/kernel/文件管理.md)
 -  [vfs-虚拟文件系统概述](./document/md/kernel/虚拟文件系统概述.md)
--  [2020-12-24-IO设备驱动](./document/md/kernel/2020-12-24-IO设备驱动.md)
-
+-  [IO设备驱动](./document/md/kernel/IO设备驱动.md)
+-  [进程和线程](./document/md/kernel/进程和线程.md)
 
 ### tcp/ip
 - [tcp协议初探](./document/md/tcp-ip/tcp协议初探.md)

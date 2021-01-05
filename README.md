@@ -7,7 +7,7 @@
 
 
 ## public docuemnt
--  [kernel-pdf]([./document/pdf](https://github.com/perrynzhou/linux-kernel-note/tree/master/document/pdf))
+-  [kernel-pdf]([./document/pdf/kernel)
 
 ##  linux-kernel
 -  [kernel-map](./document/md/kernel/kernel-map.svg)

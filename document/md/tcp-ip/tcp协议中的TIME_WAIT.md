@@ -6,16 +6,16 @@
 
 - TCP连接、断开、状态回顾
 
-  ![tcp-conn](../images/tcp-conn.png)
+  ![tcp-conn](../../images/tcp-conn.png)
 
-  ![tcp-close](../images/tcp-close.png)
+  ![tcp-close](../../images/tcp-close.png)
 
-  ![tcp-status-graph](../images/tcp-status-graph.png)
+  ![tcp-status-graph](../../images/tcp-status-graph.png)
 
 - TCP中的TIME_WAIT是什么?
   - TIME_WAIT是TCP协议中断开连接中的一种状态
   
-    ![time_wait](../images/time_wait.jpg)
+    ![time_wait](../../images/time_wait.jpg)
   - 客户端和服务端建立一条连接,客户端关闭自己这端的连接，使得TCP向服务端发送一个FIN(1)。服务端对客户端这个FIN进行ACK的确认(2)，并将客户端的FIN作为一个EOF传送给应用程序。过了一段时间服务端发送自己的FIN给客户端(3),客户端会以ACK应答服务端(4)。这时候服务端已经关闭并释放资源了，从服务端来看这个连接已经不存在了。但是客户端还没有关闭连接，而是进入TIME_WAIT状态，并在这个状态停留2MSL的两个最大段存活时间。
     
     - 2MSL是分段被丢弃之前网络中可以存活的最长时间，每个IP数据报都有一个TTL字段，数据报被路由转发一次，这个字段就减1,，当TTL字段被减到0时候，这个数据段就会被丢弃，通常这个TTL作为简单路由器跳数使用

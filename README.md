@@ -19,7 +19,7 @@
 -  [vfs-虚拟文件系统概述](./document/md/kernel/虚拟文件系统概述.md)
 -  [IO设备驱动](./document/md/kernel/IO设备驱动.md)
 -  [进程和线程](./document/md/kernel/进程和线程.md)
-
+-  [CPU绑核的意义](./document/md/kernel/CPU绑核的意义.md)
 ### tcp/ip
 - [tcp协议初探](./document/md/tcp-ip/tcp协议初探.md)
 - [tcp连接和关闭](./document/md/tcp-ip/tcp连接和关闭.md)

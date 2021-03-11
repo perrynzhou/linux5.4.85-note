@@ -1,8 +1,8 @@
 ## Linux虚拟文件系统初探
 
-| 作者 | 时间 |QQ技术交流群 |
-| ------ | ------ |------ |
-| perrynzhou@gmail.com |2020/12/01 |672152841 |
+| 作者                 | 时间       | QQ技术交流群 |
+| -------------------- | ---------- | ------------ |
+| perrynzhou@gmail.com | 2020/12/01 | 672152841    |
 
 #### 什么是VFS?
 
@@ -32,6 +32,8 @@ struct super_block {
 	struct block_device	*s_bdev;
 }
 ```
+
+- 每个文件系统都有一个超级块结构，每个超级块都要链接到一个超级块链表。文件系统内的每个文件打开时候都需要在内存分配一个inode结构，这些inode结构都要链接到超级块
 
 #### 什么是dentry(目录项)？
 
@@ -64,6 +66,8 @@ struct dentry {
 } __randomize_layout;
 
 ```
+
+- 每个文件的dentry链接到父目录的dentry,形成了文件系统的结构树，所有的dentry存储在dentry_hashtable这个哈希数组中。如果某个文件已经被打开过，内存中就应该有该文件的dentry的结构，并且这个dentry被链接到dentry_hashtable的数组中，后续在访问该文件时候，直接从hashtable中查找，避免再次读磁盘，这个dentry_hashtable也是linux 的dentry cache.
 
 #### 什么是inode?
 
@@ -161,3 +165,11 @@ struct inode {
 	void			*i_private; /* fs or device private pointer */
 } __randomize_layout;
 ```
+
+- linux 内核提供一个inode_hashtable，功能和dentry_hashtable类似。inode结构中的i_mode代表了该文件类型，一般有块设备、字符设备、目录、socket、FIFO。同时inode还有一个重要的作用就是缓存文件的数据内容，这个是通过i_mapping来实现。
+
+#### 什么是文件？
+
+- 文件对象是描述进程和文件交互的关系，磁盘上并不存在以为文件结构，当进程打开一个文件，内核就动态创建爱你一个文件对象。同一个文件，在不同的进程有不同的文件对象。
+- 内核为每个打开的文件申请一个文件对象(fd)同时返回文件号。
+
